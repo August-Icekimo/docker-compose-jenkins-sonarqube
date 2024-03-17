@@ -1,11 +1,14 @@
-version: '2'
+version: '2.1'
 
 services:
 
   jenkins:
     image: jenkins/jenkins:lts
+    restart: unless-stopped
+    container_name: jenkins
     volumes:
        - jenkins_data:/var/jenkins_home
+       - jenkins_certs:/certs/client
     networks:
       - sonarnet
     ports:
@@ -13,7 +16,7 @@ services:
       - '50000:50000'
 
   sonarqube:
-    image: sonarqube:7.6-community 
+    image: sonarqube:lts-community 
     volumes:
       - sonarqube_conf:/opt/sonarqube/conf
       - sonarqube_data:/opt/sonarqube/data
@@ -51,3 +54,4 @@ volumes:
   postgresql:
   postgresql_data:
   jenkins_data:
+  jenkins_certs:

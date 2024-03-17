@@ -15,7 +15,7 @@ services:
     networks:
       - sonarnet
     ports:
-      - '8080:8080'
+      - '7661:8080'
       - '50000:50000'
 
   dind_container:
@@ -36,7 +36,7 @@ services:
     networks:
       - sonarnet
     ports:
-      - '9000:9000'
+      - '7662:9000'
     environment:
       - sonar.jdbc.username=sonarqubeawesome
       - sonar.jdbc.password=sonarqubeawesome
